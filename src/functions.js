@@ -22,7 +22,7 @@ const functions = {
       );
       return response.data;
     } catch (err) {
-      return err;
+      return 'There is an error';
     }
   },
   getPostTitles: (posts) => {

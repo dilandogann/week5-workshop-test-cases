@@ -1,6 +1,5 @@
 const functions = require("./../functions");
 const axios = require('axios');
-const { constant } = require("lodash");
 jest.mock("axios");
 
 describe("Device function tests", () => {
