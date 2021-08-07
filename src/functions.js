@@ -1,6 +1,6 @@
-
-import axios from "axios";
+const axios = require("axios");
 const functions = {
+
   divide: (num1, num2) => {
     if (num2 === 0) {
       throw new Error('Divide by zero error')
@@ -15,8 +15,8 @@ const functions = {
     const newArr = arr.map(str => str.charAt(0).toUpperCase() + str.slice(1))
     return newArr.join(" ");
   },
-  getUserPosts() {
-    axios.get("https://jsonplaceholder.typicode.com/posts")
+  getUserTitles: () => {
+     axios.get("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
         let resp = response.data
         let items = new Array(11).fill(0);

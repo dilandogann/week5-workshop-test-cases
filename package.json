@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/dilandogann/week5-workshop-test-cases.git"
   },
   "author": "",
@@ -16,7 +16,6 @@
     "jest": "^27.0.6"
   },
   "bugs": {
-    "url": "https://github.com/dilandogann/week5-workshop-test-cases/issues"
   },
   "homepage": "https://github.com/dilandogann/week5-workshop-test-cases#readme",
   "dependencies": {
