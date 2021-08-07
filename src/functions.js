@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require('axios');
 const functions = {
 
   divide: (num1, num2) => {
@@ -15,25 +15,32 @@ const functions = {
     const newArr = arr.map(str => str.charAt(0).toUpperCase() + str.slice(1))
     return newArr.join(" ");
   },
-  getUserTitles: () => {
-     axios.get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        let resp = response.data
-        let items = new Array(11).fill(0);
-        resp.map(item => {
-          return items[item.userId]++;
-        })
-        let max = items[1];
-        for (let i = 2; i <= items.length; i++) {
-          if (items[i] >= max) {
-            max = i
-          }
-        }
-        const titles = resp.filter(item => item.userId === max).map(item => {
-          return item.title
-        })
-        return titles;
-      }).catch(err => 'Error occured');
+  getUserPosts: async () => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  },
+  getPostTitles: (posts) => {
+    let resp = posts
+    let items = new Array(11).fill(0);
+    resp.map(item => {
+      return items[item.userId]++;
+    })
+    let max = items[1];
+    for (let i = 2; i <= items.length; i++) {
+      if (items[i] >= max) {
+        max = i
+      }
+    }
+    const titles = resp.filter(item => item.userId === max).map(item => {
+      return item.title
+    })
+    return titles;
   }
 };
 module.exports = functions;

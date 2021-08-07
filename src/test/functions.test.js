@@ -1,4 +1,6 @@
 const functions = require("./../functions");
+const axios = require('axios');
+const { constant } = require("lodash");
 jest.mock("axios");
 
 describe("Device function tests", () => {
@@ -21,8 +23,9 @@ describe("To upper function tests", () => {
     });
 });
 describe("Get users titles", () => {
+
     it("should return the post titles of the user who post the most", async () => {
-        functions.getUserTitles().mockImplementation(() => {
+        axios.get.mockImplementation(() => {
             return Promise.resolve([
                 {
                     userId: 7,
@@ -78,10 +81,11 @@ describe("Get users titles", () => {
                     title: "temporibus sit alias delectus eligendi possimus magni",
                     body: "quo deleniti praesentium dicta non quodaut est molestiasnmolestias et officia quis nihilitaque dolorem quia"
                 },
-            ]);
+            ]
+            )
         });
-
-        const titles = await functions.getUserTitles();
+        const posts = await functions.getUserPosts()
+        const titles = functions.getPostTitles(posts);
 
         expect(titles).toEqual(["ratione ex tenetur perferendis", "qui qui voluptates illo iste minima", "quaerat velit veniam amet cupiditate aut numquam ut sequi", "temporibus sit alias delectus eligendi possimus magni"]);
 
